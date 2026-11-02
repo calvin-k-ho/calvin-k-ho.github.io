@@ -10,8 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "aos": "^2.3.4",
+    "bootstrap": "^5.3.8",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^19.3.1",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^7.18.5",
+    "styled-components": "^6.6.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
