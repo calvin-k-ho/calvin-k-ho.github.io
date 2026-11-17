@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import projects from "../data/projects";
@@ -7,6 +7,7 @@ const defaultSections = ["Context", "Problem", "Design", "Test", "Solution"];
 
 function CaseStudyLayout({ className, client, title, summary, note, meta, heroImage, heroAlt, heroColor, sections = defaultSections, children }) {
     const [active, setActive] = useState(sections[0]);
+    const navRef = useRef(null);
 
     const { pathname } = useLocation();
     const index = projects.findIndex((project) => project.to === pathname);
@@ -33,6 +34,22 @@ function CaseStudyLayout({ className, client, title, summary, note, meta, heroIm
         return () => observer.disconnect();
     }, [sections]);
 
+    useEffect(() => {
+        const nav = navRef.current;
+        const link = nav?.querySelector(`a[href="#${active}"]`);
+        if (!nav || !link || nav.scrollWidth <= nav.clientWidth) return;
+        nav.scrollLeft = link.offsetLeft - (nav.clientWidth - link.offsetWidth) / 2;
+    }, [active]);
+
+    const goToSection = (event, id) => {
+        const section = document.getElementById(id);
+        if (!section) return;
+        event.preventDefault();
+        setActive(id);
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.replaceState(null, "", `#${id}`);
+    };
+
     return (
         <main className={className} data-aos="fade-in">
             <header className="intro">
@@ -57,9 +74,15 @@ function CaseStudyLayout({ className, client, title, summary, note, meta, heroIm
             )}
 
             <div className="columns">
-                <nav className="side-nav">
+                <nav className="side-nav" aria-label="Case study sections" ref={navRef}>
                     {sections.map((id) => (
-                        <a key={id} href={`#${id}`} className={active === id ? "active" : ""}>
+                        <a
+                            key={id}
+                            href={`#${id}`}
+                            className={active === id ? "active" : ""}
+                            aria-current={active === id ? "location" : undefined}
+                            onClick={(event) => goToSection(event, id)}
+                        >
                             {id}
                         </a>
                     ))}
@@ -255,6 +278,37 @@ export default styled(CaseStudyLayout)`
         font-family: "Inter", sans-serif;
         font-size: 13px;
         color: #6b6b6b;
+    }
+
+    /* Product screens: framed so they read as the work. Process artifacts stay unframed. */
+    .shot img,
+    img.shot {
+        border: 1px solid #ece8e1;
+        border-radius: 8px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.07);
+    }
+
+    .feature + figure,
+    .feature figure {
+        margin-top: 20px;
+    }
+
+    .feature p {
+        margin: 12px 0 0;
+    }
+
+    .compare {
+        display: grid;
+        gap: 28px;
+        margin-top: 24px;
+    }
+
+    .compare figure {
+        margin-top: 0;
+    }
+
+    .compare .small-shot {
+        max-width: 560px;
     }
 
     .pair {
@@ -787,8 +841,51 @@ export default styled(CaseStudyLayout)`
             grid-template-columns: minmax(0, 1fr);
         }
 
+        /* Section nav becomes a sticky, horizontally scrolling bar. */
         .side-nav {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            display: flex;
+            gap: 8px;
+            margin: 0 -24px;
+            /* Right padding and fade keep chips clear of the fixed menu button. */
+            padding: 12px 88px 12px 24px;
+            -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 104px), transparent calc(100% - 72px));
+            mask-image: linear-gradient(to right, #000 calc(100% - 104px), transparent calc(100% - 72px));
+            overflow-x: auto;
+            scrollbar-width: none;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #ece8e1;
+        }
+
+        .side-nav::-webkit-scrollbar {
             display: none;
+        }
+
+        .side-nav a {
+            flex: none;
+            padding: 6px 14px;
+            border: 1px solid #e5e2dc;
+            border-radius: 999px;
+            background: #fff;
+            font-size: 13px;
+            color: #6b6b6b;
+        }
+
+        .side-nav a.active {
+            border-color: #3b6ef6;
+            color: #1a1a1a;
+        }
+
+        .side-nav a:focus-visible {
+            outline: 2px solid #3b6ef6;
+            outline-offset: 2px;
+        }
+
+        section {
+            scroll-margin-top: 72px;
         }
     }
 

@@ -92,6 +92,13 @@ export default styled(NavBar)`
   left: 0;
   width: 100%;
   z-index: 1000;
+  pointer-events: none;
+
+  .nav-bar:not(.hidden),
+  .nav-toggle,
+  .nav-overlay.is-open {
+    pointer-events: auto;
+  }
 
   .nav-bar {
     background-color: rgba(255, 255, 255, 0.85);

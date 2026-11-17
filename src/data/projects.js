@@ -9,7 +9,7 @@ const projects = [
         to: "/works/sales-compensation",
         client: "Enterprise Telecommunications",
         title: "AI-Assisted Compensation Planning",
-        summary: "Independently developed an AI-assisted compensation planning concept, from process discovery to an interactive prototype that is now moving into development.",
+        summary: "Independently developed an AI-assisted compensation planning concept, from process discovery to a stakeholder-reviewed prototype planned for development.",
         image: salesCompCover,
         imageAlt: "AI-assisted compensation planning dashboard",
         accent: "#067AB4",

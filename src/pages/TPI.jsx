@@ -11,17 +11,11 @@ import uiStyles from "../assets/images/TPI/design artifacts/ui-styles.png";
 import donateImpact from "../assets/images/TPI/design artifacts/donate-impact.png";
 
 // LoFi, Mid, and HiFi
-import missionWebLofi from "../assets/images/TPI/lofi/mission-w-lofi.png";
-import missionWebMid from "../assets/images/TPI/mid/mission-w-mid.png";
 import missionWebHifi from "../assets/images/TPI/hifi/mission-w-hifi.png";
 import donateWebLofi from "../assets/images/TPI/lofi/donate-w-lofi.png";
 import donateWebMid from "../assets/images/TPI/mid/donate-w-mid.png";
 import donateWebHifi from "../assets/images/TPI/hifi/donate-w-hifi.png";
-import missionMobileLofi from "../assets/images/TPI/lofi/mission-m-lofi.png";
-import missionMobileMid from "../assets/images/TPI/mid/mission-m-mid.png";
 import missionMobileHifi from "../assets/images/TPI/hifi/mission-m-hifi.png";
-import donateMobileLofi from "../assets/images/TPI/lofi/donate-m-lofi.png";
-import donateMobileMid from "../assets/images/TPI/mid/donate-m-mid.png";
 import donateMobileHifi from "../assets/images/TPI/hifi/donate-m-hifi.png";
 
 // Finalized designs
@@ -37,21 +31,18 @@ import volunteer from "../assets/images/TPI/pages/volunteer.png";
 import jobs from "../assets/images/TPI/pages/jobs.png";
 import reports from "../assets/images/TPI/pages/reports.png";
 
-const sections = ["Problem", "Goals", "Design", "Testing", "Outcome"];
+const sections = ["Challenge", "Goals", "Design", "Testing", "Outcome"];
 
 const stages = ["Lo-fi", "Mid-fi", "Hi-fi"];
 
-const progressions = [
-    { name: "Our Mission", web: [missionWebLofi, missionWebMid, missionWebHifi], mobile: [missionMobileLofi, missionMobileMid, missionMobileHifi] },
-    { name: "Donate", web: [donateWebLofi, donateWebMid, donateWebHifi], mobile: [donateMobileLofi, donateMobileMid, donateMobileHifi] },
-];
 
 function TPI() {
     const meta = [
-        { label: "Role", value: "Product Designer, Design Team of 3" },
+        { label: "Role", value: "Product Designer, one of three designers" },
+        { label: "My focus", value: "Wireframes, visual design, prototypes; contributed to research" },
         { label: "Timeline", value: "4 months" },
         { label: "Tools", value: "Figma" },
-        { label: "Scope", value: "UX research, information architecture, UX/UI design, prototyping, design system" },
+        { label: "Status", value: "Delivered in 2021" },
     ];
 
     return (
@@ -64,15 +55,15 @@ function TPI() {
             <CaseStudyLayout
                 client="The Pathway Initiative | Develop for Good"
                 title="Redesigning a nonprofit's website to earn trust and make giving the obvious next step"
-                summary="The Pathway Initiative (TPI) is a Boston-based nonprofit that mentors minority and disadvantaged students on their path to medicine, from high school through medical residency. Its website wasn't helping it earn the donations, volunteers, and sponsors it needed. Through Develop for Good, which pairs student designers and engineers with nonprofits for pro bono work, I joined a three-person design team over four months. I contributed to the UX/UI design, information architecture, prototyping, and design system for a website redesign focused on communicating TPI's mission and making it easier for visitors to get involved."
+                summary="The Pathway Initiative (TPI) is a Boston-based nonprofit that mentors minority and disadvantaged students on their path to medicine, but its website wasn't earning the donations, volunteers, and sponsors it needed. Through Develop for Good, I joined a three-person design team for four months, primarily owning wireframes, visual designs, and prototypes for a redesign that leads with TPI's story and makes getting involved easy."
                 meta={meta}
                 heroImage={banner}
                 heroAlt="The Pathway Initiative website redesign"
                 sections={sections}
             >
                 {/* The Problem */}
-                <section id="Problem">
-                    <span className="label">01 — Problem</span>
+                <section id="Challenge">
+                    <span className="label">01 — Challenge</span>
                     <h2>A website that couldn't ask for what TPI needed</h2>
                     <p>TPI's most important goals were attracting donors, recruiting volunteers, and securing sponsors. Through client feedback sessions and a review of the existing site, our team identified four gaps getting in the way.</p>
                     <div className="cards">
@@ -134,7 +125,7 @@ function TPI() {
                     <p>The strongest examples made giving easy to find, kept donation experiences familiar, and introduced the organization's mission before asking visitors to contribute.</p>
                     <figure>
                         <img src={analysis} alt="Competitive analysis of nonprofit donation experiences" loading="lazy" />
-                        <figcaption>Competitive analysis of nonprofit donation experiences.</figcaption>
+                        <figcaption>The strongest examples made giving easy to find and introduced the mission before the ask.</figcaption>
                     </figure>
 
                     <div className="feature">
@@ -161,29 +152,32 @@ function TPI() {
                         <p>The design team used wireframes to establish page structure, hierarchy, and navigation before developing higher-fidelity concepts. Two key pages received particular attention across desktop and mobile: Our Mission and Donate.</p>
                         <p><strong>Our Mission</strong> communicated why TPI exists and what makes its mentorship model meaningful. <strong>Donate</strong> translated that understanding into a clear path to contribute, with the donation request following the organization's story rather than interrupting it.</p>
                     </div>
-                    {progressions.map((page) => (
-                        <div key={page.name}>
-                            <h4 className="mt-4">{page.name}</h4>
-                            <p className="source mb-2">Desktop</p>
-                            <div className="trio">
-                                {page.web.map((image, index) => (
-                                    <figure key={stages[index]}>
-                                        <span className={index === 2 ? "tag final" : "tag"}>{stages[index]}</span>
-                                        <img src={image} alt={`${page.name} on desktop, ${stages[index]}`} loading="lazy" />
-                                    </figure>
-                                ))}
-                            </div>
-                            <p className="source mt-4 mb-2">Mobile</p>
-                            <div className="trio peek phones">
-                                {page.mobile.map((image, index) => (
-                                    <figure key={stages[index]}>
-                                        <span className={index === 2 ? "tag final" : "tag"}>{stages[index]}</span>
-                                        <img src={image} alt={`${page.name} on mobile, ${stages[index]}`} loading="lazy" />
-                                    </figure>
-                                ))}
-                            </div>
+                    <h4 className="mt-4">Donate, from wireframe to final</h4>
+                    <div className="trio peek">
+                        {stages.map((stage, index) => (
+                            <figure key={stage} className="shot">
+                                <span className={index === 2 ? "tag final" : "tag"}>{stage}</span>
+                                <img src={[donateWebLofi, donateWebMid, donateWebHifi][index]} alt={`Donate page on desktop, ${stage}`} loading="lazy" />
+                            </figure>
+                        ))}
+                    </div>
+                    <p className="source mt-2">The ask comes after the story: the page opens with what TPI does before asking visitors to give.</p>
+
+                    <h4 className="mt-4">Our Mission, and both pages on mobile</h4>
+                    <div className="pair">
+                        <figure className="shot">
+                            <img src={missionWebHifi} alt="Our Mission page on desktop, final design" loading="lazy" />
+                            <figcaption>Our Mission explains what makes TPI's end-to-end mentorship model different.</figcaption>
+                        </figure>
+                        <div className="trio peek phones" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
+                            <figure className="shot">
+                                <img src={missionMobileHifi} alt="Our Mission page on mobile, final design" loading="lazy" />
+                            </figure>
+                            <figure className="shot">
+                                <img src={donateMobileHifi} alt="Donate page on mobile, final design" loading="lazy" />
+                            </figure>
                         </div>
-                    ))}
+                    </div>
 
                     <div className="feature">
                         <span className="spotlight-num">03</span>

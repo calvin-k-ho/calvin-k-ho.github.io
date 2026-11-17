@@ -18,14 +18,15 @@ import onboardingHiFi from "../assets/images/STEMForKids/hifi/onboarding-hifi.pn
 import eventsHiFi from "../assets/images/STEMForKids/hifi/events-hifi.png";
 import prototypeHiFi from "../assets/images/STEMForKids/hifi/prototype-hifi.png";
 
-const sections = ["Problem", "Goals", "Design", "Testing", "Outcome"];
+const sections = ["Challenge", "Goals", "Design", "Testing", "Outcome"];
 
 function STEMForKids() {
     const meta = [
-        { label: "Role", value: "UX Designer" },
+        { label: "Role", value: "UX Designer, one of three" },
+        { label: "My focus", value: "IA, wireframes, all high-fidelity screens, testing" },
         { label: "Timeline", value: "10 weeks" },
         { label: "Tools", value: "Balsamiq, Figma" },
-        { label: "Scope", value: "UX research, information architecture, wireframing, high-fidelity design, prototyping, testing" },
+        { label: "Status", value: "Academic concept, clickable prototype" },
     ];
 
     return (
@@ -38,19 +39,19 @@ function STEMForKids() {
             <CaseStudyLayout
                 client="Academic Project"
                 title="Designing a personalized learning experience to make STEM more engaging for students"
-                summary="STEM For Kids is a mobile app concept that helps K–12 students discover their interests in science, technology, engineering, and math through personalized recommendations, hands-on challenges, and local STEM events. As part of a three-person academic HCI team, I contributed to the information architecture and early wireframes, then designed all high-fidelity screens in Figma. I also helped test the experience with students and used their feedback to refine the onboarding and event discovery flows."
+                summary="STEM For Kids is a mobile app concept that helps K–12 students discover what they enjoy in STEM through personalized recommendations, hands-on challenges, and local events. On a three-person academic HCI team, I contributed to the information architecture and wireframes, designed all high-fidelity screens, and used student testing to refine onboarding and event discovery."
                 meta={meta}
                 heroImage={banner}
                 heroAlt="STEM For Kids Mobile App Design"
                 sections={sections}
             >
-                {/* The Problem */}
-                <section id="Problem">
-                    <span className="label">01 — Problem</span>
+                {/* Challenge */}
+                <section id="Challenge">
+                    <span className="label">01 — Challenge</span>
                     <h2>One-size-fits-all experiences can miss what motivates students</h2>
                     <p>Students have different interests, confidence levels, and ways of engaging with STEM. A learning experience built around the same content for everyone can make it harder for students to connect classroom concepts to things they genuinely enjoy.</p>
                     <p>I reviewed platforms like Khan Academy Kids and BrainPOP Jr. to understand how existing products presented educational content and encouraged engagement. I also developed student personas around different interests and motivations.</p>
-                    <div className="trio mb-3">
+                    <div className="trio mb-2" style={{ maxWidth: 560 }}>
                         <figure>
                             <img src={one} alt="Student persona 1" loading="lazy" />
                         </figure>
@@ -61,6 +62,7 @@ function STEMForKids() {
                             <img src={three} alt="Student persona 3" loading="lazy" />
                         </figure>
                     </div>
+                    <p className="source mt-0">Personas built around different motivations led to the first goal: start from what each student enjoys.</p>
                 </section>
 
                 {/* Product Goals */}
@@ -93,7 +95,7 @@ function STEMForKids() {
                     <p>I mapped the app's information architecture around discovery, learning, and community, then explored the core flows as wireframes in Balsamiq.</p>
                     <figure>
                         <img src={IA} alt="Information architecture for STEM For Kids" loading="lazy" />
-                        <figcaption>Information architecture.</figcaption>
+                        <figcaption>The app is organized around three ideas: discover, learn, and connect.</figcaption>
                     </figure>
 
                     <div className="feature">
@@ -103,7 +105,7 @@ function STEMForKids() {
                     </div>
                     <figure>
                         <img src={onboardingLoFi} alt="Wireframes of the quiz and onboarding flow" loading="lazy" />
-                        <figcaption>Wireframes of the quiz and onboarding flow.</figcaption>
+                        <figcaption>The wireframes tested a short quiz that shapes each student’s recommendations.</figcaption>
                     </figure>
 
                     <div className="feature">
@@ -124,11 +126,11 @@ function STEMForKids() {
                     <div className="pair">
                         <figure>
                             <img src={friendsLoFi} alt="Wireframes of adding friends and joining groups" loading="lazy" />
-                            <figcaption>Friends and groups.</figcaption>
+                            <figcaption>Adding friends and joining groups.</figcaption>
                         </figure>
                         <figure>
                             <img src={challengesLoFi} alt="Wireframes of open challenges" loading="lazy" />
-                            <figcaption>Challenges.</figcaption>
+                            <figcaption>Open challenges students can take on together.</figcaption>
                         </figure>
                     </div>
                 </section>
@@ -166,7 +168,7 @@ function STEMForKids() {
                     <p>While the concept was not developed into a production product, the prototype demonstrated how a more personalized experience could help students discover and explore STEM beyond the classroom.</p>
                     <figure>
                         <img src={prototypeHiFi} alt="Select high-fidelity screens from the STEM For Kids prototype" loading="lazy" />
-                        <figcaption>Select high-fidelity screens.</figcaption>
+                        <figcaption>The prototype connects onboarding, recommendations, challenges, and events in one flow.</figcaption>
                     </figure>
 
                     <h3 className="mt-5">What I learned</h3>
